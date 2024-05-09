@@ -6,29 +6,29 @@
  */
 
 // Given Parameters
-const vel = 10000; // velocity (km/h)
-const acc = 3; // acceleration (m/s^2)
+const velocity = 10000; // velocity (km/h)
+const acceleration = 3; // acceleration (m/s^2)
 const time = 3600; // seconds (1 hour)
-const d = 0; // distance (km)
-const fuel = 5000; // remaining fuel (kg)
-const fbr = 0.5; // fuel burn rate (kg/s)
+const distance = 0; // distance (km)
+const remainingFuel = 5000; // remaining fuel (kg)
+const fuelBurnRate = 0.5; // fuel burn rate (kg/s)
 
 
-const d2 = d + (vel*time) //calcultes new distance
-const rf = fuel - (fbr*time) //calculates remaining fuel
+const newDistance = distance + (velocity*time) //calcultes new distance
+const newRemainingFuel = remainingFuel - (fuelBurnRate*time) //calculates remaining fuel
 
 // Pick up an error with how the function below is called and make it robust to such errors
-const calcNewVel = (vel, acc, time) => { 
-  let newVelInMeters = vel * 1000
-  let newVelInKiliMeters = newVelInMeters/3600
-  return (newVelInKiliMeters + (acc*time)) * 3600/1000
+const calcNewVel = (velocity, acceleration, time) => { 
+  const newVelocityInMeters = velocity * 1000
+  const newVelocityInKiliMeters = newVelocityInMeters/3600
+  return (newVelocityInKiliMeters + (acceleration*time)) * 3600/1000
 }
 
-const vel2 = calcNewVel(vel, acc, time) //calculates new velocity based on acceleration
+const newVelocity = calcNewVel(velocity, acceleration, time) //calculates new velocity based on acceleration
 
-console.log(`Corrected New Velocity: ${vel2} km/h`);
-console.log(`Corrected New Distance: ${d2/3600} km`);
-console.log(`Corrected Remaining Fuel: ${rf} kg`);
+console.log(`Corrected New Velocity: ${newVelocity} km/h`);
+console.log(`Corrected New Distance: ${newDistance/3600} km`);
+console.log(`Corrected Remaining Fuel: ${newRemainingFuel} kg`);
 
 
 
